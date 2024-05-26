@@ -5,11 +5,11 @@ branding:
   color: 'purple'
 inputs:
   specmatic-insights-host:
-    description: 'URL of the Specmatic Insights server. Ex: https://insights.specmatic.in'
-    required: true
+    description: 'URL of the Specmatic Insights server. Will default to https://insights.specmatic.in, if not specified'
+    required: false
   specmatic-reports-dir:
-    description: 'Path to the Specmatic reports directory. Ex: ./build/reports/specmatic'
-    required: true
+    description: 'Path to the Specmatic reports directory. Will default to ./build/reports/specmatic, if not provided'
+    required: false
 runs:
   using: 'node20'
   main: 'dist/index.js'

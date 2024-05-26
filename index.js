@@ -4,14 +4,23 @@ const { exec } = require('child_process');
 async function run() {
     console.log('Running Specmatic Insights Build Reporter for Github Action');
     try {
-        const argsString = Object.keys(process.env)
+        const argsMap = Object.keys(process.env)
             .filter(key => key.startsWith('INPUT_'))
             .reduce((acc, key) => {
                 const inputName = key.slice('INPUT_'.length).toLowerCase();
-                return `${acc} --${inputName}=${process.env[key]}`;
-            }, '');
+                acc[inputName] = process.env[key];
+                return acc;
+            }, {
+                'specmatic-reports-dir': './build/reports/specmatic',
+                'specmatic-insights-host': 'https://insights.specmatic.in'
+            });
+
+        const argsString = Object.entries(argsMap)
+            .reduce((acc, [key, value]) => `${acc} --${key}=${value}`, '');
 
         const command = `npx specmatic-insights-github-build-reporter ${argsString}`;
+
+        console.log("Executing: " + command);
 
         exec(command, (error, stdout, stderr) => {
             if (error) {
