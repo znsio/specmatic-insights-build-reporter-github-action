@@ -8,6 +8,10 @@
         "specmatic-insights-github-build-reporter": "^1.0.5"
     },
     "scripts": {
-        "package": "npx @vercel/ncc build index.js -o dist"
+        "package": "npx @vercel/ncc build index.js -o dist",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0"
     }
 }

@@ -1,6 +1,60 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 2932:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const core = __nccwpck_require__(2186);
+const { exec } = __nccwpck_require__(2081);
+
+async function run() {
+    console.log('Running Specmatic Insights Build Reporter for Github Action');
+    try {
+        const argsString = constructCLIArguments();
+
+        const command = `npx specmatic-insights-github-build-reporter ${argsString}`;
+
+        console.log("Executing: " + command);
+
+        exec(command, (error, stdout, stderr) => {
+            if (error) {
+                core.setFailed(`Action failed with error: ${error.message}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+            console.error(`stderr: ${stderr}`);
+        });
+    } catch (error) {
+        core.setFailed(`Action failed with error: ${error.message}`);
+    }
+}
+
+run();
+
+function constructCLIArguments() {
+    const argsMap = Object.keys(process.env)
+        .filter(key => key.startsWith('INPUT_'))
+        .reduce((acc, key) => {
+            const inputName = key.slice('INPUT_'.length).toLowerCase().replaceAll("_", "-");
+            const value = process.env[key];
+            if (!value) return acc;
+            acc[inputName] = value;
+            return acc;
+        }, {
+            'specmatic-reports-dir': './build/reports/specmatic',
+            'specmatic-insights-host': 'https://insights.specmatic.in'
+        });
+
+    const argsString = Object.entries(argsMap)
+        .reduce((acc, [key, value]) => `${acc} --${key}=${value}`, '');
+    return argsString;
+}
+
+module.exports = { constructCLIArguments };
+
+
+/***/ }),
+
 /***/ 7351:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -26811,50 +26865,12 @@ module.exports = parseParams
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-const core = __nccwpck_require__(2186);
-const { exec } = __nccwpck_require__(2081);
-
-async function run() {
-    console.log('Running Specmatic Insights Build Reporter for Github Action');
-    try {
-        const argsMap = Object.keys(process.env)
-            .filter(key => key.startsWith('INPUT_'))
-            .reduce((acc, key) => {
-                const inputName = key.slice('INPUT_'.length).toLowerCase();
-                acc[inputName] = process.env[key];
-                return acc;
-            }, {
-                'specmatic-reports-dir': './build/reports/specmatic',
-                'specmatic-insights-host': 'https://insights.specmatic.in'
-            });
-
-        const argsString = Object.entries(argsMap)
-            .reduce((acc, [key, value]) => `${acc} --${key}=${value}`, '');
-
-        const command = `npx specmatic-insights-github-build-reporter ${argsString}`;
-
-        console.log("Executing: " + command);
-
-        exec(command, (error, stdout, stderr) => {
-            if (error) {
-                core.setFailed(`Action failed with error: ${error.message}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-        });
-    } catch (error) {
-        core.setFailed(`Action failed with error: ${error.message}`);
-    }
-}
-
-run();
-
-})();
-
-module.exports = __webpack_exports__;
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __nccwpck_require__(2932);
+/******/ 	module.exports = __webpack_exports__;
+/******/ 	
 /******/ })()
 ;
