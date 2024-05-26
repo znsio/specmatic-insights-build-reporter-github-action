@@ -1,0 +1,18 @@
+name: 'Specmatic Insights Biuld Reporter for Github Action'
+description: 'A GitHub Action to report stats from the build to Specmatic Insights server'
+inputs:
+  specmatic-insights-host:
+    description: 'URL of the Specmatic Insights server. Ex: https://insights.specmatic.in'
+    required: true
+  specmatic-central-repo-report:
+    description: 'Path to the central contract repo report. Ex: ./build/reports/specmatic/central_contract_repo_report.json'
+    required: false
+  specmatic-coverage:
+    description: 'Path to the coverage report. Ex: ./build/reports/specmatic/coverage_report.json'
+    required: false
+  specmatic-stub-usage:
+    description: 'Path to the stub usage report. Ex: ./build/reports/specmatic/stub_usage_report.json'
+    required: false
+runs:
+  using: 'node20'
+  main: 'index.js'
