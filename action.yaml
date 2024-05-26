@@ -1,4 +1,4 @@
-name: 'Specmatic Insights Biuld Reporter for Github Action'
+name: 'Specmatic Insights Build Reporter for Github Action'
 description: 'A GitHub Action to report stats from the build to Specmatic Insights server'
 inputs:
   specmatic-insights-host:
