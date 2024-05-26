@@ -29,7 +29,7 @@ jobs:
           npm pack
 
       - name: Upload package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: specmatic-insights-build-reporter-github-action
           path: release/*.tgz
