@@ -1,0 +1,35 @@
+name: Build and Package
+
+on:
+  push:
+    tags:
+      - 'v*.*.*' 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' 
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Package code
+        run: |
+          mkdir -p release
+          cp -R . release/
+          cd release
+          npm pack
+
+      - name: Upload package
+        uses: actions/upload-artifact@v3
+        with:
+          name: specmatic-insights-build-reporter-github-action
+          path: release/*.tgz
