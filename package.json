@@ -1,6 +1,6 @@
 {
     "name": "specmatic-insights-build-reporter-github-action",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "main": "index.js",
     "dependencies": {
         "@actions/core": "^1.2.6",
