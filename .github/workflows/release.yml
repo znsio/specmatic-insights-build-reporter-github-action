@@ -24,7 +24,7 @@ jobs:
       - name: Package code
         run: |
           mkdir -p release
-          cp -R . release/
+          rsync -av --exclude='release' . release/
           cd release
           npm pack
 
