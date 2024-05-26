@@ -5,11 +5,10 @@ jest.mock('@actions/core', () => ({
     setFailed: jest.fn()
 }));
 
-describe('constructCLIArguments', () => {
-    beforeEach(() => {
-        process.env = {}
-    });
+const defaultReportDir = './build/reports/specmatic';
+const defaultSpecmaticHost = 'https://insights.specmatic.in';
 
+describe('constructCLIArguments', () => {
     it('should generate correct args string with default values', () => {
         process.env = {
             INPUT_SAMPLE_KEY: 'sampleValue'
@@ -17,23 +16,24 @@ describe('constructCLIArguments', () => {
 
         const argsString = constructCLIArguments();
 
-        console.log("Result : " + argsString)
-
         expect(argsString).toContain('--sample-key=sampleValue');
-        expect(argsString).toContain('--specmatic-reports-dir=./build/reports/specmatic');
-        expect(argsString).toContain('--specmatic-insights-host=https://insights.specmatic.in');
+        expect(argsString).toContain('--specmatic-reports-dir=' + defaultReportDir);
+        expect(argsString).toContain('--specmatic-insights-host=' + defaultSpecmaticHost);
     });
 
     it('should override default values if specified in env', () => {
+        const reportDir = './custom/dir';
+        const specmaticHost = 'https://custom.host';
+
         process.env = {
-            INPUT_SPECMATIC_REPORTS_DIR: './custom/dir',
-            INPUT_SPECMATIC_INSIGHTS_HOST: 'https://custom.host'
+            INPUT_SPECMATIC_REPORTS_DIR: reportDir,
+            INPUT_SPECMATIC_INSIGHTS_HOST: specmaticHost
         };
 
         const argsString = constructCLIArguments();
 
-        expect(argsString).toContain('--specmatic-reports-dir=./custom/dir');
-        expect(argsString).toContain('--specmatic-insights-host=https://custom.host');
+        expect(argsString).toContain('--specmatic-reports-dir=' + reportDir);
+        expect(argsString).toContain('--specmatic-insights-host=' + specmaticHost);
     });
 
     it('should skip empty and undefined environment variables', () => {
@@ -44,8 +44,8 @@ describe('constructCLIArguments', () => {
 
         const argsString = constructCLIArguments();
 
-        expect(argsString).toContain('--specmatic-reports-dir=./build/reports/specmatic');
-        expect(argsString).toContain('--specmatic-insights-host=https://insights.specmatic.in');
+        expect(argsString).toContain('--specmatic-reports-dir=' + defaultReportDir);
+        expect(argsString).toContain('--specmatic-insights-host=' + defaultSpecmaticHost);
     });
 
 });
