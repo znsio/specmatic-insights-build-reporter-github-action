@@ -1,10 +1,9 @@
 {
     "name": "specmatic-insights-build-reporter-github-action",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "index.js",
     "dependencies": {
-      "@actions/core": "^1.2.6",
-      "specmatic-insights-github-build-reporter": "latest"
+        "@actions/core": "^1.2.6",
+        "specmatic-insights-github-build-reporter": "latest"
     }
-  }
-  
+}
