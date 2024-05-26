@@ -21,9 +21,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Prepare Distro
-        run: npm run package
-
       - name: Package code
         run: |
           tar -czvf package.tgz action.yaml dist
