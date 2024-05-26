@@ -23,13 +23,11 @@ jobs:
 
       - name: Package code
         run: |
-          mkdir -p release
-          rsync -av --exclude='release' --exclude='.git' . release/
-          tar -czvf release/package.tgz -C release .
+          tar -czvf package.tgz action.yaml dist
 
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: release/package.tgz
+          files: package.tgz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

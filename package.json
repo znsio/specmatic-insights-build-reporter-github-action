@@ -4,6 +4,10 @@
     "main": "index.js",
     "dependencies": {
         "@actions/core": "^1.2.6",
+        "@vercel/ncc": "^0.38.1",
         "specmatic-insights-github-build-reporter": "latest"
+    },
+    "scripts": {
+        "package": "npx @vercel/ncc build index.js -o dist"
     }
 }
