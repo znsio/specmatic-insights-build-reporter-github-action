@@ -5,7 +5,7 @@
     "dependencies": {
         "@actions/core": "^1.2.6",
         "@vercel/ncc": "^0.38.1",
-        "specmatic-insights-github-build-reporter": "latest"
+        "specmatic-insights-github-build-reporter": "^1.0.5"
     },
     "scripts": {
         "package": "npx @vercel/ncc build index.js -o dist"

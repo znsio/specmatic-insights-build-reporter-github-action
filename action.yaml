@@ -7,15 +7,9 @@ inputs:
   specmatic-insights-host:
     description: 'URL of the Specmatic Insights server. Ex: https://insights.specmatic.in'
     required: true
-  specmatic-central-repo-report:
-    description: 'Path to the central contract repo report. Ex: ./build/reports/specmatic/central_contract_repo_report.json'
-    required: false
-  specmatic-coverage:
-    description: 'Path to the coverage report. Ex: ./build/reports/specmatic/coverage_report.json'
-    required: false
-  specmatic-stub-usage:
-    description: 'Path to the stub usage report. Ex: ./build/reports/specmatic/stub_usage_report.json'
-    required: false
+  specmatic-reports-dir:
+    description: 'Path to the Specmatic reports directory. Ex: ./build/reports/specmatic'
+    required: true
 runs:
   using: 'node20'
   main: 'dist/index.js'
