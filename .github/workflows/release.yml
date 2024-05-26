@@ -24,12 +24,12 @@ jobs:
       - name: Package code
         run: |
           mkdir -p release
-          rsync -av --exclude='release' . release/
-          cd release
-          npm pack
+          rsync -av --exclude='release' --exclude='.git' . release/
+          tar -czvf release/package.tgz -C release .
 
-      - name: Upload package
-        uses: actions/upload-artifact@v3
+      - name: Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: specmatic-insights-build-reporter-github-action
-          path: release/*.tgz
+          files: release/package.tgz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
