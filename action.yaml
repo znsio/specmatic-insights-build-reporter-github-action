@@ -1,5 +1,8 @@
 name: 'Specmatic Insights Build Reporter for Github Action'
 description: 'A GitHub Action to report stats from the build to Specmatic Insights server'
+branding:
+  icon: 'check-square'
+  color: 'purple'
 inputs:
   specmatic-insights-host:
     description: 'URL of the Specmatic Insights server. Ex: https://insights.specmatic.in'
