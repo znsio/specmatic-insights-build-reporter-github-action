@@ -9,7 +9,8 @@ async function run() {
              .filter(key => !key.startsWith('INPUT_JAVA'))
              .reduce((acc, key) => {
                  const inputName = key.slice('INPUT_'.length).toLowerCase();
-                 return `${acc} --${inputName}=${process.env[key]}`
+                 const value = process.env[key];
+                 return (value) ? `${acc} --${inputName}=${value}` : acc;
              }, '');
 
         const command = `npx specmatic-insights-github-build-reporter ${argsString}`;
