@@ -6,7 +6,6 @@ async function run() {
     try {
         const argsString = Object.keys(process.env)
              .filter(key => key.startsWith('INPUT_'))
-             .filter(key => !key.startsWith('INPUT_JAVA'))
              .reduce((acc, key) => {
                  const inputName = key.slice('INPUT_'.length).toLowerCase();
                  const value = process.env[key];
