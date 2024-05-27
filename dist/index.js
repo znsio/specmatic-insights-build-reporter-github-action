@@ -26820,7 +26820,8 @@ const { exec } = __nccwpck_require__(2081);
 async function run() {
     console.log('Running Specmatic Insights Build Reporter for Github Action');
     try {
-        const argsString = Object.entries(process.argv).reduce((acc, [key, value]) => `${acc} --${key}=${value}`, '');
+        const argsString = Object.entries(process.argv.slice(2))
+            .reduce((acc, [key, value]) => `${acc} --${key}=${value}`, '');
 
         const command = `npx specmatic-insights-github-build-reporter ${argsString}`;
 

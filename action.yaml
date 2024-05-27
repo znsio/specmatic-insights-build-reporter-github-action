@@ -10,6 +10,30 @@ inputs:
   specmatic-reports-dir:
     description: 'Path to the Specmatic reports directory. Will default to ./build/reports/specmatic, if not provided'
     required: false
+  org-id:
+    description: 'Specmatic Organization ID'
+    required: true
+  branch-ref:
+    description: 'The fully-formed branch ref name that triggered the build. In Github this maps to github.ref environment variable.'
+    required: true
+  branch-name:
+    description: 'The short branch name that triggered the build. In Github this maps to github.ref_name environment variable.'
+    required: true
+  build-definition-id:
+    description: 'Every build pipeline or workflow has an unique id which remains the same across all the CI build/workflow runs. In Github this maps to WORKFLOW_ID which is not avilable as the default environment variable.'
+    required: true
+  build-id:
+    description: 'The build ID that triggered the build. In Github this maps to github.run_id environment variable.'
+    required: true
+  repo-name:
+    description: 'Name of the GIT repository. The repo should not include the repo owner name. In Github this maps to github.event.repository.name environment variable.'
+    required: true
+  repo-id:
+    description: 'Unique ID of the GIT repository. In Github this maps to github.repository_id environment variable.'
+    required: true
+  repo-url:
+    description: 'Fully qualified HTTP GIT repository URL. In Github this maps to github.event.repository.html_url environment variable.'
+    required: true
 runs:
   using: 'node20'
   main: 'dist/index.js'
