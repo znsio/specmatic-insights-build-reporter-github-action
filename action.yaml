@@ -4,6 +4,9 @@ branding:
   icon: 'check-square'
   color: 'purple'
 inputs:
+  github_token:
+    description: 'Github Personal Access Token to allow the action to access the Github API for obtaining workflow_id'
+    required: true
   specmatic-insights-host:
     description: 'URL of the Specmatic Insights server. Will default to https://insights.specmatic.in, if not specified'
     required: false
@@ -18,9 +21,6 @@ inputs:
     required: true
   branch-name:
     description: 'The short branch name that triggered the build. In Github this maps to github.ref_name environment variable.'
-    required: true
-  build-definition-id:
-    description: 'Every build pipeline or workflow has an unique id which remains the same across all the CI build/workflow runs. In Github this maps to WORKFLOW_ID which is not avilable as the default environment variable.'
     required: true
   build-id:
     description: 'The build ID that triggered the build. In Github this maps to github.run_id environment variable.'
