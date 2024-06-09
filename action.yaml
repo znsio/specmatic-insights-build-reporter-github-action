@@ -4,7 +4,7 @@ branding:
   icon: 'check-square'
   color: 'purple'
 inputs:
-  github_token:
+  github-token:
     description: 'Github Personal Access Token to allow the action to access the Github API for obtaining workflow_id'
     required: true
   specmatic-insights-host:
