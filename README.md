@@ -18,7 +18,7 @@ In your Github workflow file, please add the following step after running specma
 
 ```yaml
 - name: Run Specmatic Insights Github Build Reporter
-  uses: znsio/specmatic-insights-build-reporter-github-action@v1.1.4
+  uses: znsio/specmatic-insights-build-reporter-github-action@v2.0.1
   with:
     github-token: ${{ secrets.YOUR_GITHUB_TOKEN }}
     branch-ref: refs/heads/main
@@ -33,7 +33,7 @@ If you need to specify the addition arguments, then this is a sample:
 
 ```yaml
 - name: Run Specmatic Insights Github Build Reporter
-  uses: znsio/specmatic-insights-build-reporter-github-action@v1.1.3
+  uses: znsio/specmatic-insights-build-reporter-github-action@v2.0.1
   with:
     github-token: ${{ secrets.YOUR_GITHUB_TOKEN }}
     specmatic-insights-host: https://custom-insights-service.com
