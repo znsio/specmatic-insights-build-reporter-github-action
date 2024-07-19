@@ -8,7 +8,7 @@ inputs:
     description: 'Github Personal Access Token to allow the action to access the Github API for obtaining workflow_id'
     required: true
   specmatic-insights-host:
-    description: 'URL of the Specmatic Insights server. Will default to https://insights.specmatic.in, if not specified'
+    description: 'URL of the Specmatic Insights server. Will default to https://insights.specmatic.io, if not specified'
     required: false
   specmatic-reports-dir:
     description: 'Path to the Specmatic reports directory. Will default to ./build/reports/specmatic, if not provided'

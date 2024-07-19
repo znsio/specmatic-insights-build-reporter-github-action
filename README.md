@@ -4,7 +4,7 @@ This Github Action is used to publish the build stats to the Specmatic Insights 
 While invoking this Github Action, the following arguments must be passes:
 
 - `github-token`(Required) Every build pipeline or workflow has an unique id which remains the same across all the CI build/workflow runs. In Github this maps to WORKFLOW_ID which is not avilable as the default environment variable. In order to fetch this we need a github personal access token that has read permissions for Github Actions to get the WORKFLOW_ID through Github API call
-- `specmatic-insights-host`(Optional) URL of the Specmatic Insights server. By default this will point to https://insights.specmatic.in However if you've an on-prem Specmatic Insights server, then you can set the host accordingly.
+- `specmatic-insights-host`(Optional) URL of the Specmatic Insights server. By default this will point to https://insights.specmatic.io However if you've an on-prem Specmatic Insights server, then you can set the host accordingly.
 - `specmatic-reports-dir`(Optional) Path to the Specmatic reports directory. If not specified, will default to ./build/reports/specmatic
 - `org-id`(Required) Specmatic Organization ID
 - `branch-ref`(Required) The fully-formed branch ref name that triggered the build. In Github this maps to github.ref environment variable.
